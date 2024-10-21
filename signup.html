@@ -16,45 +16,15 @@
             background-size: cover;
             background-position: center;
         }
-        form {
+        .form-container {
             background: rgba(255, 255, 255, 0.5);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            width: 640px; /* Ajustez la largeur selon vos besoins */
+            height: 863px; /* Ajustez la hauteur selon vos besoins */
             position: relative;
             text-align: center; /* Centrer les éléments dans le formulaire */
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-        .button-image {
-            width: 80%; /* Réduction de la taille des boutons */
-            cursor: pointer;
-            margin-bottom: 10px;
-            display: block; /* Centrer les boutons */
-            margin-left: auto;
-            margin-right: auto;
-            background: none;
-            border: none;
-            padding: 0;
-        }
-        .note {
-            font-size: 12px;
-            color: #555;
-            margin-bottom: 10px;
         }
         .buttons-container {
             position: absolute;
@@ -66,12 +36,6 @@
         .buttons-container img {
             cursor: pointer;
         }
-        .sticker {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            width: 50px; /* Ajuste la taille selon tes besoins */
-        }
     </style>
 </head>
 <body>
@@ -80,102 +44,8 @@
         <a href="javascript:history.back()"><img src="https://i.imgur.com/bJ3si7I.png" alt="Previous"></a>
         <a href="next.html"><img src="https://i.imgur.com/mw4eBRK.png" alt="Next"></a>
     </div>
-    <form id="signup-form">
-        <img src="https://i.postimg.cc/VN1pDdtf/inscription.png" alt="Sticker" class="sticker">
-        <h1>Inscription</h1>
-        <label for="cpNumber">Numéro de CP:</label>
-        <input type="text" id="cpNumber" name="cpNumber" required>
-        <br>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <div class="note">Veuillez vous enregistrer avec votre email professionnel de type xxx@reseau.sncf.fr. Si vous souhaitez utiliser un autre type d'adresse mail ou permettre à un conjoint d'accéder au site, veuillez contacter l'administrateur du site <a href="mailto:julian.verhelle@reseau.sncf.fr">ici</a>.</div>
-        <br>
-        <button type="button" class="button-image" onclick="console.log('Button clicked'); submitForm()">
-            <img src="https://i.imgur.com/fT6LhKe.png" alt="Inscription">
-        </button>
-        <a href="index.html"><img src="https://i.imgur.com/lMWcCJz.png" alt="Cancel" class="button-image"></a>
-    </form>
-    <script type="module" src="firebase.js"></script>
-    <script type="module">
-        import { auth } from './firebase.js';
-        import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-
-        // Liste des emails autorisés
-        const authorizedEmails = [
-            "fahim.bouchemale@reseau.sncf.fr",
-            "fabien.luchier@reseau.sncf.fr",
-            "djamal.mansouri@reseau.sncf.fr",
-            "gregory.boucher@reseau.sncf.fr",
-            "gregory.esparon@reseau.sncf.fr",
-            "jodie.grevin@reseau.sncf.fr",
-            "michael.guilbert@reseau.sncf.fr",
-            "thomas.gillon@reseau.sncf.fr",
-            "suzy.barroire@reseau.sncf.fr",
-            "jason.avakian@reseau.sncf.fr",
-            "jeremie.simon@reseau.sncf.fr",
-            "julian.verhelle@reseau.sncf.fr",
-            "raphael.lahogue@reseau.sncf.fr",
-            "mathieu.gallai@reseau.sncf.fr",
-            "jennifer.loial@reseau.sncf.fr",
-            "nitharsan.mahendran@reseau.sncf.fr",
-            "romain.chavet@reseau.sncf.fr",
-            "vincent.guyon@reseau.sncf.fr",
-            "islam.meftah@reseau.sncf.fr",
-            "brice.baptiste@reseau.sncf.fr",
-            "zachariya.hammami@reseau.sncf.fr",
-            "charlotte.denele@reseau.sncf.fr",
-            "karine.bleubar@reseau.sncf.fr",
-            "cyril.cocu@reseau.sncf.fr",
-            "stephane.chevalier@reseau.sncf.fr",
-            "maximilien.legrand@reseau.sncf.fr",
-            "armelle.francois@reseau.sncf.fr",
-            "perrine.debruyne@reseau.sncf.fr",
-            "sandra.galopin@reseau.sncf.fr",
-            "julien.delezay@reseau.sncf.fr",
-            "cyril.carrot@reseau.sncf.fr",
-            "ylias.crespin@reseau.sncf.fr",
-            "aurelie.kadoum@reseau.sncf.fr",
-            "patrick.goberville@reseau.sncf.fr",
-            "fabien.decayeux@reseau.sncf.fr",
-            "georges.de.fontes@reseau.sncf.fr",
-            "yassine.mimouni@reseau.sncf.fr",
-            "remi.warlouzet@reseau.sncf.fr"
-        ];
-
-        // Function to create a new user
-        function submitForm() {
-            console.log("submitForm called");
-            const cpNumber = document.getElementById('cpNumber').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-
-            console.log("CP Number:", cpNumber);
-            console.log("Email:", email);
-            console.log("Password:", password);
-
-            // Vérifie si l'email est autorisé
-            if (!authorizedEmails.includes(email)) {
-                alert("Vous n'êtes pas autorisé à vous inscrire.");
-                return;
-            }
-
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    console.log("User signed up:", user);
-
-                    // Redirige vers accueil.html
-                    window.location.href = 'accueil.html';
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error("Error signing up:", errorCode, errorMessage);
-                });
-        }
-    </script>
+    <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjS0Mh1GyQuTxW2L9SKkSZO_RQj3KHEkbp73NhMg5ZYhYF7A/viewform?embedded=true" width="640" height="863" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+    </div>
 </body>
 </html>
