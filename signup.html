@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Formulaire Google</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src https://docs.google.com;">
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -16,35 +18,18 @@
             background-size: cover;
             background-position: center;
         }
-        .form-container {
+        .content {
+            text-align: center;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.5);
-            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 640px; /* Ajustez la largeur selon vos besoins */
-            height: 863px; /* Ajustez la hauteur selon vos besoins */
-            position: relative;
-            text-align: center; /* Centrer les éléments dans le formulaire */
-        }
-        .buttons-container {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            gap: 10px;
-        }
-        .buttons-container img {
-            cursor: pointer;
+            width: 640px;
         }
     </style>
 </head>
 <body>
-    <div class="buttons-container">
-        <a href="index.html"><img src="https://i.imgur.com/uFEZosQ.png" alt="Home"></a>
-        <a href="javascript:history.back()"><img src="https://i.imgur.com/bJ3si7I.png" alt="Previous"></a>
-        <a href="next.html"><img src="https://i.imgur.com/mw4eBRK.png" alt="Next"></a>
-    </div>
-    <div class="form-container">
+    <div class="content">
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjS0Mh1GyQuTxW2L9SKkSZO_RQj3KHEkbp73NhMg5ZYhYF7A/viewform?embedded=true" width="640" height="863" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
     </div>
 </body>
