@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulaire Google</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; frame-src https://docs.google.com;">
+    <title>Inscription</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -18,19 +16,47 @@
             background-size: cover;
             background-position: center;
         }
-        .content {
-            text-align: center;
-            padding: 20px;
+        .form-container {
             background: rgba(255, 255, 255, 0.5);
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            width: 640px;
+            width: 640px; /* Ajustez la largeur selon les besoins */
+            position: relative;
+            text-align: center; /* Centrer les éléments dans le formulaire */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .buttons-container {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .buttons-container img {
+            cursor: pointer;
+        }
+        .sticker {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 50px; /* Ajuste la taille selon tes besoins */
         }
     </style>
 </head>
 <body>
-    <div class="content">
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjS0Mh1GyQuTxW2L9SKkSZO_RQj3KHEkbp73NhMg5ZYhYF7A/viewform?embedded=true" width="640" height="863" frameborder="0" marginheight="0" marginwidth="0">Chargement…</iframe>
+    <div class="buttons-container">
+        <a href="index.html"><img src="https://i.imgur.com/uFEZosQ.png" alt="Home"></a>
+        <a href="javascript:history.back()"><img src="https://i.imgur.com/bJ3si7I.png" alt="Previous"></a>
+        <a href="next.html"><img src="https://i.imgur.com/mw4eBRK.png" alt="Next"></a>
+    </div>
+    <div class="form-container">
+        <img src="https://i.postimg.cc/VN1pDdtf/inscription.png" alt="Sticker" class="sticker">
+        <h1>Inscription</h1>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjS0Mh1GyQuTxW2L9SKkSZO_RQj3KHEkbp73NhMg5ZYhYF7A/viewform?embedded=true" width="640" height="1007" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
     </div>
 </body>
 </html>
